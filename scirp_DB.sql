@@ -1,11 +1,5 @@
-
 create database Dricamp;
 use Dricamp;
-create table rol(
-id_rol int auto_increment,
-nombre varchar(50) not null,
-primary key (id_rol)
-);
 create table direccion(
 id_direccion int auto_increment,
 direccion varchar(150) not null,
@@ -22,30 +16,17 @@ primary key (id_tipodocumento)
 create table usuario(
 id_usuario int auto_increment,
 id_tipodocumento int not null,
-num_documento int not null,
+num_documento int not null unique,
 nombre varchar(150) not null,
-apellido varchar(150) not null,
 telefono int not null unique,
 email varchar(150) not null unique,
 id_direccion int not null,
-fecha_nacimiento date not null,
-nombre_usuario varchar(50) not null unique,
 contraseña varchar(8) not null,
 primary key(id_usuario),
 key fk_tipodoc (id_tipodocumento),
 key fk_dir (id_direccion),
 constraint fk_tipodoc foreign key (id_tipodocumento) references tipoDocumento(id_tipodocumento),
 constraint fk_dir foreign key (id_direccion) references direccion(id_direccion) on delete cascade
-);
-create table usuarioRol(
-id_usuariorol int auto_increment,
-id_usuario int not null,
-id_rol int not null,
-primary key (id_usuariorol),
-key fk_usr (id_usuario),
-key fk_rol (id_rol),
-constraint fk_usr foreign key (id_usuario) references usuario(id_usuario),
-constraint fk_rol foreign key (id_rol) references rol(id_rol)
 );
 create table campesino (
 id_campesino int auto_increment,
@@ -70,32 +51,30 @@ id_marca int auto_increment,
 marca varchar(100) not null,
 primary key (id_marca)
 );
+create table transportista (
+id_transportista int auto_increment,
+id_usuario int not null,
+id_catlicencia int not null,
+num_licencia varchar(30) not null,
+primary key (id_transportista),
+key fk_user (id_usuario),
+key fk_licencia (id_catlicencia),
+constraint fk_licencia foreign key (id_catlicencia) references categoriaLicencia(id_catlicencia),
+constraint fk_user foreign key (id_usuario) references usuario(id_usuario)
+);
 create table vehiculo(
 id_vehiculo int auto_increment,
 id_tipovehiculo int not null,
+id_transportista int not null,
 id_marca int not null,
 placa varchar(12) not null,
-modleo int not null, 
+modelo int not null, 
 capacidad_carga int not null,
 primary key(id_vehiculo),
 key fk_tipovehi (id_tipovehiculo),
 key fk_marca (id_marca),
 constraint fk_tipovehiculo foreign key (id_tipovehiculo) references tipoVehiculo(id_tipovehiculo),
 constraint fk_marca foreign key (id_marca) references marca(id_marca)
-);
-create table transportista (
-id_transportista int auto_increment,
-id_usuario int not null,
-id_catlicencia int not null,
-id_vehiculo int not null,
-num_licencia varchar(30) not null,
-primary key (id_transportista),
-key fk_user (id_usuario),
-key fk_licencia (id_catlicencia),
-key fk_vehiculo (id_vehiculo),
-constraint fk_vehiculo foreign key (id_vehiculo) references vehiculo(id_vehiculo),
-constraint fk_licencia foreign key (id_catlicencia) references categoriaLicencia(id_catlicencia),
-constraint fk_user foreign key (id_usuario) references usuario(id_usuario)
 );
 create table ruta(
 id_ruta int auto_increment,
@@ -146,10 +125,10 @@ id_campesino int not null,
 id_estado int not null,
 id_categoria int not null,
 id_presentacion int not null,
+foto longblob,
 nombre varchar(50) not null,
 precio double not null,
-fecha_creacion date not null,
-fecha_caducidad date not null,
+fecha_produccion date not null,
 descripcion varchar(200),
 primary key (id_producto),
 key fk_estado (id_estado), 
@@ -164,12 +143,15 @@ constraint fk_estado foreign key (id_estado) references estado(id_estado)
 create table pedido(
 id_pedido int auto_increment,
 id_usuario int not null,
+id_transportista int,
 fecha_pedido date not null, 
 valor_total double not null,
 id_estado int,
 primary key (id_pedido),
 key fk_usuari (id_usuario),
 key fk_estad (id_estado),
+key fk_transport (id_transportista),
+constraint fk_transport foreign key (id_transportista) references transportista(id_transportista),
 constraint fk_estad foreign key (id_estado) references estado(id_estado),
 constraint fk_usuari foreign key (id_usuario) references usuario(id_usuario)
 );
@@ -178,21 +160,10 @@ id_detalles int auto_increment,
 id_pedido int not null,
 id_producto int not null, 
 cantidad int not null,
-valorTotal double not null,
+valor_productos double not null,
 primary key (id_detalles),
 key fk_pedido (id_pedido),
 key fk_producto (id_producto),
 constraint fk_pedido foreign key (id_producto) references pedido(id_pedido),
 constraint fk_producto foreign key (id_producto) references producto(id_producto)
-);
-create table pedidoTransporte(
-id_asignar int auto_increment,
-id_transportista int not null,
-id_pedido int not null,
-fecha_recoger date,
-primary key (id_asignar),
-key fk_trans (id_transportista),
-key fk_pedid (id_pedido),
-constraint fk_trans foreign key (id_transportista) references transportista(id_transportista),
-constraint fk_pedid foreign key (id_pedido) references pedido(id_pedido)
 );

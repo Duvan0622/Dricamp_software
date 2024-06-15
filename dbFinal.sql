@@ -199,15 +199,25 @@ VALUES
 INSERT INTO producto (id_usuario, estado, categoria, presentacion, foto, nombre, precio, fecha_produccion, descripcion)
 VALUES 
 (1, 'Disponible', 'Frutas', 'Caja', 'https://raw.githubusercontent.com/Duvan0622/Dricamp_software/ramaDuvan/imagenes/bananas.png', 'Bananas', 10.0, '2023-06-01', 'Bananas frescas'),
-(1, 'Disponible', 'Carnes', 'Bandeja', 'https://raw.githubusercontent.com/Duvan0622/Dricamp_software/ramaDuvan/imagenes/carne%20molida.png', 'Carne molida', 20.0, '2023-06-02', 'Carne molida de res'),
-(1, 'Disponible', 'Verduras', 'Unidad', 'https://raw.githubusercontent.com/Duvan0622/Dricamp_software/ramaDuvan/imagenes/tomate.png', 'Tomate', 2.5, '2023-06-03', 'Tomate rojo para ensaladas'),
-(1, 'Disponible', 'Lácteos', 'Botella', 'https://raw.githubusercontent.com/Duvan0622/Dricamp_software/ramaDuvan/imagenes/leche.png', 'Leche', 5.0, '2023-06-04', 'Leche descremada'),
-(1, 'Disponible', 'Frutas', 'Bolsa', 'https://raw.githubusercontent.com/Duvan0622/Dricamp_software/ramaDuvan/imagenes/limon.png', 'Limón', 7.0, '2023-06-05', 'Limones frescos'),
-(1, 'Disponible', 'Carnes', 'Empaque', 'https://raw.githubusercontent.com/Duvan0622/Dricamp_software/ramaDuvan/imagenes/pechuga.png', 'Pechuga de pollo', 15.0, '2023-06-06', 'Pechuga de pollo sin piel'),
-(1, 'Disponible', 'Carnes', 'Bandeja', 'https://raw.githubusercontent.com/Duvan0622/Dricamp_software/ramaDuvan/imagenes/chorizo.png', 'Chorizo', 12.0, '2023-06-07', 'Chorizo ahumado'),
-(1, 'Disponible', 'Frutas', 'Caja', 'https://raw.githubusercontent.com/Duvan0622/Dricamp_software/ramaDuvan/imagenes/pina.png', 'Piña', 9.0, '2023-06-08', 'Piña fresca'),
-(1, 'Disponible', 'Frutas', 'Bolsa', 'https://raw.githubusercontent.com/Duvan0622/Dricamp_software/ramaDuvan/imagenes/manzanas.png', 'Manzanas', 8.0, '2023-06-09', 'Manzanas rojas'),
-(1, 'Disponible', 'Frutas', 'Caja', 'https://raw.githubusercontent.com/Duvan0622/Dricamp_software/ramaDuvan/imagenes/guanabana.png', 'Guanábana', 11.0, '2023-06-10', 'Guanábana fresca');
+(2, 'Disponible', 'Carnes', 'Bandeja', 'https://raw.githubusercontent.com/Duvan0622/Dricamp_software/ramaDuvan/imagenes/carne%20molida.png', 'Carne molida', 20.0, '2023-06-02', 'Carne molida de res'),
+(3, 'Disponible', 'Verduras', 'Atado', 'https://raw.githubusercontent.com/Duvan0622/Dricamp_software/ramaDuvan/imagenes/cebolla%20larga.png', 'Cebolla larga', 3.0, '2023-06-03', 'Cebolla larga fresca'),
+(4, 'Disponible', 'Verduras', 'Bolsa', 'https://raw.githubusercontent.com/Duvan0622/Dricamp_software/ramaDuvan/imagenes/cebollaMorada.png', 'Cebolla morada', 4.0, '2023-06-04', 'Cebolla morada fresca'),
+(5, 'Disponible', 'Carnes', 'Bandeja', 'https://raw.githubusercontent.com/Duvan0622/Dricamp_software/ramaDuvan/imagenes/chorizo.png', 'Chorizo', 12.0, '2023-06-05', 'Chorizo ahumado'),
+(6, 'Disponible', 'Legumbres', 'Bolsa', 'https://raw.githubusercontent.com/Duvan0622/Dricamp_software/ramaDuvan/imagenes/frijol.png', 'Frijol', 5.0, '2023-06-06', 'Frijoles frescos'),
+(7, 'Disponible', 'Frutas', 'Unidad', 'https://raw.githubusercontent.com/Duvan0622/Dricamp_software/ramaDuvan/imagenes/guanabana.png', 'Guanábana', 11.0, '2023-06-07', 'Guanábana fresca'),
+(8, 'Disponible', 'Otros', 'Cartón', 'https://raw.githubusercontent.com/Duvan0622/Dricamp_software/ramaDuvan/imagenes/huevos.png', 'Huevos', 7.0, '2023-06-08', 'Huevos frescos'),
+(9, 'Disponible', 'Otros', 'Botella', 'https://raw.githubusercontent.com/Duvan0622/Dricamp_software/ramaDuvan/imagenes/leche.png', 'Leche', 5.0, '2023-06-09', 'Leche descremada'),
+(10, 'Disponible', 'Verduras', 'Bolsa', 'https://raw.githubusercontent.com/Duvan0622/Dricamp_software/ramaDuvan/imagenes/lechuga.png', 'Lechuga', 2.5, '2023-06-10', 'Lechuga fresca'),
+(1, 'Disponible', 'Frutas', 'Bolsa', 'https://raw.githubusercontent.com/Duvan0622/Dricamp_software/ramaDuvan/imagenes/limon.png', 'Limón', 7.0, '2023-06-11', 'Limones frescos'),
+(2, 'Disponible', 'Frutas', 'Bolsa', 'https://raw.githubusercontent.com/Duvan0622/Dricamp_software/ramaDuvan/imagenes/manzanas.png', 'Manzanas', 8.0, '2023-06-12', 'Manzanas rojas'),
+(3, 'Disponible', 'Carnes', 'Bandeja', 'https://raw.githubusercontent.com/Duvan0622/Dricamp_software/ramaDuvan/imagenes/muslos%20de%20pollo.png', 'Muslos de pollo', 14.0, '2023-06-13', 'Muslos de pollo frescos'),
+(4, 'Disponible', 'Frutas', 'Bolsa', 'https://raw.githubusercontent.com/Duvan0622/Dricamp_software/ramaDuvan/imagenes/naranjas.png', 'Naranjas', 6.0, '2023-06-14', 'Naranjas frescas'),
+(5, 'Disponible', 'Verduras', 'Bolsa', 'https://raw.githubusercontent.com/Duvan0622/Dricamp_software/ramaDuvan/imagenes/papa.png', 'Papa', 3.0, '2023-06-15', 'Papa fresca'),
+(6, 'Disponible', 'Carnes', 'Bandeja', 'https://raw.githubusercontent.com/Duvan0622/Dricamp_software/ramaDuvan/imagenes/pechuga.png', 'Pechuga de pollo', 15.0, '2023-06-16', 'Pechuga de pollo sin piel'),
+(7, 'Disponible', 'Frutas', 'Unidad', 'https://raw.githubusercontent.com/Duvan0622/Dricamp_software/ramaDuvan/imagenes/pi%C3%B1a.png', 'Piña', 9.0, '2023-06-17', 'Piña fresca'),
+(8, 'Disponible', 'Verduras', 'Bolsa', 'https://raw.githubusercontent.com/Duvan0622/Dricamp_software/ramaDuvan/imagenes/tomate.png', 'Tomate', 2.5, '2023-06-18', 'Tomate fresco'),
+(9, 'Disponible', 'Verduras', 'Bolsa', 'https://raw.githubusercontent.com/Duvan0622/Dricamp_software/ramaDuvan/imagenes/yuca.png', 'Yuca', 4.0, '2023-06-19', 'Yuca fresca'),
+(10, 'Disponible', 'Verduras', 'Bolsa', 'https://raw.githubusercontent.com/Duvan0622/Dricamp_software/ramaDuvan/imagenes/zanahoria.png', 'Zanahoria', 3.0, '2023-06-20', 'Zanahoria fresca');
 
 INSERT INTO pedidoProducto (id_pedido, id_producto, cantidad, valor_productos)
 VALUES 

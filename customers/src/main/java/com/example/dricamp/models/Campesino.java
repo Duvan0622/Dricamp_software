@@ -8,7 +8,7 @@ public class Campesino {
     private String email;
     private String telefono;
     private String direccion;
-    private List<Productos> productos;
+    private List<Producto> productos;
 
     public Campesino(String nombre, String email, String telefono, String direccion) {
         this.nombre = nombre;
@@ -51,11 +51,11 @@ public class Campesino {
         this.direccion = direccion;
     }
 
-    public List<Productos> getProductos() {
+    public List<Producto> getProductos() {
         return productos;
     }
 
-    public void addProducto(Productos producto) {
+    public void addProducto(Producto producto) {
         this.productos.add(producto);
     }
 

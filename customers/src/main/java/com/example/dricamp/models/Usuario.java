@@ -1,8 +1,7 @@
 package com.example.dricamp.models;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.*;
 
 @Data
@@ -16,27 +15,46 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUsuario;
 
-    @NotNull
-    @NotBlank(message = "Obligatorio")
+    @NotNull(message = "Requerido.")
+    @NotBlank(message = "No puede estar en blanco.")
+    @Size(max = 50, message = "Máximo 50 caracteres.")
     @Column(name = "tipodocumento", nullable = false, length = 50)
     private String tipoDocumento;
 
-    @Column(name = "numDocumento")
+    @NotNull(message = "Requerido")
+    @Min(value = 1, message = "Debe ser un número válido")
+    @Digits(integer = 12, fraction = 0, message = "Debe tener como máximo 12 dígitos")
+    @Column(name = "numDocumento", nullable = false)
     private Long numDocumento;
 
-    @Column(name = "nombre")
+    @NotNull(message = "Requerido")
+    @NotBlank(message = "No puede estar en blanco")
+    @Size(min = 3, max = 50, message = "Máximo 50 Caracteres")
+    @Column(name = "nombre", nullable = false, length = 50)
     private String nombre;
 
-    @Column(name = "telefono")
+    @NotNull(message = "Requerido")
+    @Min(value = 1, message = "Debe ser un telefono válido")
+    @Digits(integer = 16, fraction = 0, message = "Ingresa un telefono válido")
+    @Column(name = "telefono", nullable = false)
     private Long telefono;
 
-    @Column(name = "email")
+    @NotNull(message = "Requerido")
+    @NotBlank(message = "No puede estar en blanco")
+    @Size(min = 10, message = "El email debe tener mas de 10 caracteres")
+    @Email(message = "El email tiene un formato no válido")
+    @Column(name = "email", nullable = false, length = 150)
     private String email;
 
-    @Column(name = "direccion")
+    @NotNull(message = "Requerido")
+    @NotBlank(message = "No puede estar en blanco")
+    @Column(name = "direccion", nullable = false, length = 200)
     private String direccion;
 
-    @Column(name = "contrasena")
+    @NotNull(message = "Requerido")
+    @NotBlank(message = "Requerido")
+    @Size(min = 8, max = 8, message = "La contraseña debe ser de 8 caracteres")
+    @Column(name = "contrasena", nullable = false, length = 8)
     private String contrasena;
 }
 

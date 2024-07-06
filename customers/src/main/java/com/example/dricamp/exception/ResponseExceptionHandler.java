@@ -32,10 +32,9 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     };
 
-    @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
                                                                   HttpHeaders headers,
-                                                                  HttpStatusCode status,
+                                                                  HttpStatus status,
                                                                   WebRequest request){
         Map<String, String> errors = new HashMap<>();
         ex.getBindingResult().getAllErrors().forEach((error) -> {

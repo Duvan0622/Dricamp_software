@@ -3,6 +3,10 @@ package com.example.dricamp.controllers;
 import com.example.dricamp.services.IUsuarioServicio;
 import com.example.dricamp.models.Usuario;
 import java.util.List;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,24 +20,28 @@ public class UsuarioControlador {
     @Autowired
     private IUsuarioServicio usuarioServicio;
 
-    @GetMapping("/list")
-    public List<Usuario> listar(){
+    @Operation(summary = "Obtiene todos los usuarios")
+    @GetMapping
+    public List<Usuario> findAll(){
         return usuarioServicio.getUsuarios();
     }
 
-    @GetMapping("/list/{id}")
-    public Usuario buscarPorId(@PathVariable Long id){
+    @Operation(summary = "Obtiene un usuario por su ID")
+    @GetMapping("/{id}")
+    public Usuario findById(@PathVariable Long id){
         return usuarioServicio.getUsuario(id);
     }
 
-    @PostMapping("/agregar")
-    public ResponseEntity<Usuario> agregar (@RequestBody Usuario usuario){
+    @Operation(summary = "Realiza la creación de un usuario")
+    @PostMapping
+    public ResponseEntity<Usuario> create (@Valid @RequestBody Usuario usuario){
         Usuario obj = usuarioServicio.guardarUsuario(usuario);
         return new ResponseEntity<>(obj, HttpStatus.OK);
     }
 
-    @PutMapping("/editar")
-    public ResponseEntity<Usuario> editar(@RequestBody Usuario usuario){
+    @Operation(summary = "Modifica un usuario")
+    @PutMapping
+    public ResponseEntity<Usuario> update(@Valid @RequestBody Usuario usuario){
         Usuario obj = usuarioServicio.getUsuario(usuario.getIdUsuario());
         if (obj != null){
             obj.setIdUsuario(usuario.getIdUsuario());
@@ -51,8 +59,11 @@ public class UsuarioControlador {
         return new ResponseEntity<>(obj, HttpStatus.OK);
     }
 
-    @DeleteMapping("/rm/{id}")
-    public ResponseEntity<Usuario> eliminar(@PathVariable Long id){
+    @Operation(summary = "Elimina un cliente")
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Usuario> delete(
+            @Parameter(description = "Id del usuario que se desea eliminar")
+            @PathVariable("Id") Long id){
         Usuario obj = usuarioServicio.getUsuario(id);
         if(obj != null){
             usuarioServicio.delete(id);

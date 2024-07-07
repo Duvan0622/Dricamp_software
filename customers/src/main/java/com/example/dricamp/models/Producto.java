@@ -1,17 +1,16 @@
 package com.example.dricamp.models;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name="productos")
+
 public class Producto {
 
-    @Column(name="id")
+    @Column(name="id_producto")
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name="estado")
     private String estado;
@@ -27,12 +26,15 @@ public class Producto {
     private String fechaProduccion;
     @Column(name="descripcion")
     private String descripcion;
+    @ManyToOne
+    @JoinColumn(name = "id_usuarios", nullable = false)
+    private Usuario usuario;
 
     public Producto() {
 
     }
 
-    public Producto(int id, String estado, String categoria, String presentacion, String nombre, double precio, String fechaProduccion, String descripcion) {
+    public Producto(int id, String estado, String categoria, String presentacion, String nombre, double precio, String fechaProduccion, String descripcion, Usuario usuario) {
         this.id = id;
         this.estado = estado;
         this.categoria = categoria;
@@ -41,9 +43,9 @@ public class Producto {
         this.precio = precio;
         this.fechaProduccion = fechaProduccion;
         this.descripcion = descripcion;
+        this.usuario = usuario;
     }
 
-    // Getters y Setters
     public int getId() {
         return id;
     }
@@ -52,20 +54,20 @@ public class Producto {
         this.id = id;
     }
 
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
     public String getCategoria() {
         return categoria;
     }
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public String getPresentacion() {
@@ -108,17 +110,11 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    @Override
-    public String toString() {
-        return "Producto{" +
-                "id=" + id +
-                ", estado='" + estado + '\'' +
-                ", categoria='" + categoria + '\'' +
-                ", presentacion='" + presentacion + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", precio=" + precio +
-                ", fechaProduccion=" + fechaProduccion +
-                ", descripcion='" + descripcion + '\'' +
-                '}';
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

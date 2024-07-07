@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f9fc;
+        }
+        .card {
+            width: 100%;
+            max-width: 400px;
+            margin: 20px;
+        }
+        .img-profile {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .form-control {
+            background-color: #f8f9fc;
+            border: none;
+            box-shadow: none;
+        }
+        .form-control[disabled], .form-control[readonly] {
+            background-color: #e9ecef;
+            opacity: 1;
+        }
+        .btn-primary {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body id="page-top">
+
+<!-- Profile Card -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Detalles del Usuario</h6>
+    </div>
+    <div class="card-body text-center">
+        <img class="img-fluid img-profile rounded-circle mb-3" src="img/profile.jpg" alt="Foto del usuario">
+        <form>
+            <div class="form-group">
+                <label for="txtNombre">Nombre</label>
+                <input type="text" class="form-control" id="txtNombre" disabled>
+            </div>
+            <div class="form-group">
+                <label for="txtCategoria">Categoría</label>
+                <input type="text" class="form-control" id="txtCategoria" disabled>
+            </div>
+            <div class="form-group">
+                <label for="txtEstado">Estado</label>
+                <input type="text" class="form-control" id="txtEstado" disabled>
+            </div>
+            <div class="form-group">
+                <label for="txtPresentacion">Presentación</label>
+                <input type="text" class="form-control" id="txtPresentacion" disabled>
+            </div>
+            <button href="index.html" type="button" class="btn btn-primary" >Devolver al Inicio</button>
+        </form>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>

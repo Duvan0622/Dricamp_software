@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Dricamp_software.iml" filepath="$PROJECT_DIR$/.idea/Dricamp_software.iml" />
-      <module fileurl="file://$PROJECT_DIR$/customers/customers.iml" filepath="$PROJECT_DIR$/customers/customers.iml" />
     </modules>
   </component>
 </project>

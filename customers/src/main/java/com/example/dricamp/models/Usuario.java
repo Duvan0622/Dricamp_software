@@ -1,110 +1,77 @@
 package com.example.dricamp.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+import lombok.*;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
+@Data
 @Entity
-@Table(name="usuarios")
+@Builder
+@Table(name = "usuario")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Usuario {
-
-    @Column(name="id_usuarios")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
-    @Column(name="nombre")
+    private Long idUsuario;
+
+    @Size(max = 50, message = "Máximo 50 caracteres.")
+    @Column(nullable = true, length = 50)
+    private String tipoDocumento;
+
+
+    @Min(value = 1, message = "Debe ser un número válido")
+    @Digits(integer = 12, fraction = 0, message = "Debe tener como máximo 12 dígitos")
+    @Column(nullable = true)
+    private Long numDocumento;
+
+    @NotNull(message = "Requerido")
+    @NotBlank(message = "No puede estar en blanco")
+    @Size(min = 3, max = 50, message = "Máximo 50 Caracteres")
+    @Column(nullable = false, length = 50)
     private String nombre;
-    @Column(name="apellido")
+
+    @NotNull(message = "Requerido")
+    @NotBlank(message = "No puede estar en blanco")
+    @Size(min = 3, max = 50, message = "Máximo 50 Caracteres")
+    @Column(nullable = false, length = 50)
     private String apellido;
-    @Column(name="email")
+
+    @Min(value = 1, message = "Debe ser un telefono válido")
+    @Digits(integer = 16, fraction = 0, message = "Ingresa un telefono válido")
+    @Column(nullable = true)
+    private Long telefono;
+
+    @NotNull(message = "Requerido")
+    @NotBlank(message = "No puede estar en blanco")
+    @Size(min = 10, message = "El email debe tener mas de 10 caracteres")
+    @Email(message = "El email tiene un formato no válido")
+    @Column(nullable = false, length = 150)
     private String email;
-    @Column(name="contrasena")
-    private String contrasena;
-    @Column(name="direccion")
+
+    @NotBlank(message = "No puede estar en blanco")
+    @Column(nullable = true, length = 200)
     private String direccion;
-    @Column(name="rol")
-    private String rol;
+
+    @NotNull(message = "Requerido")
+    @NotBlank(message = "Requerido")
+    @Size(min = 8, max = 8, message = "La contraseña debe ser de 8 caracteres")
+    @Column(nullable = false, length = 8)
+    private String contrasena;
+
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Producto> productos;
+    private Set<UsuarioRol>  usuarioRols;
 
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Producto> productos;
 
-    public Usuario() {
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Pedido> pedidos;
 
-    }
-
-    public Usuario(String apellido, String nombre, String id, String email, String contrasena, String direccion, String rol, List<Producto> productos) {
-        this.apellido = apellido;
-        this.nombre = nombre;
-        this.id = id;
-        this.email = email;
-        this.contrasena = contrasena;
-        this.direccion = direccion;
-        this.rol = rol;
-        this.productos = productos;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public String getRol() {
-        return rol;
-    }
-
-    public void setRol(String rol) {
-        this.rol = rol;
-    }
-
-    public List<Producto> getProductos() {
-        return productos;
-    }
-
-    public void setProductos(List<Producto> productos) {
-        this.productos = productos;
-    }
-
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
+    @OneToMany(mappedBy = "transportista", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Pedido> pedidos2;
 }
+

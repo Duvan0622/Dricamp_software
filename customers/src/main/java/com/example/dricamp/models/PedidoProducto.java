@@ -28,4 +28,12 @@ public class PedidoProducto {
     private Integer cantidad;
 
     private Double valorTotal;
+
+    @PrePersist
+    @PreUpdate
+    private void calcularValorTotal() {
+        if (producto != null && cantidad != null) {
+            this.valorTotal = producto.getPrecio() * cantidad;
+        }
+    }
 }

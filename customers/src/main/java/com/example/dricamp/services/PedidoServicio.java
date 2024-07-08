@@ -17,9 +17,6 @@ public class PedidoServicio implements IPedidoServicio{
     @Autowired
     private PedidoRepositorio pedidoRepositorio;
 
-    @Autowired
-    private PedidoProductoRepositorio pedidoProductoRepositorio;
-
     @Override
     public List<Pedido> findAll() {
         return pedidoRepositorio.findAll();

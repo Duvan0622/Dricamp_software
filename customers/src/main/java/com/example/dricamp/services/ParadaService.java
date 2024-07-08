@@ -19,8 +19,8 @@ public class ParadaService {
         return paradaRepository.findAll();
     }
 
-    public Optional<Parada> getParadaById(Long id) {
-        return paradaRepository.findById(id);
+    public Parada getParadaById(Long id) {
+        return paradaRepository.findById(id).orElse(null);
     }
 
     public Parada saveParada(Parada parada) {

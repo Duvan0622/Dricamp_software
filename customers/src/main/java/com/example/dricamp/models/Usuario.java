@@ -71,7 +71,7 @@ public class Usuario {
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Pedido> pedidos;
 
-    @OneToMany(mappedBy = "transportista", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Pedido> pedidos2;
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Transportista> transportistas;
 }
 

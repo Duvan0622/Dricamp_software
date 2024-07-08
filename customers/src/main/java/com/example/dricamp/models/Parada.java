@@ -1,10 +1,13 @@
 package com.example.dricamp.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+
+import java.util.List;
 
 @Data
 @Entity
@@ -27,13 +30,10 @@ public class Parada {
     private String departamento;
     
     @NotNull
-    private Boolean paraEstacion;
+    @Size(max = 100)
+    private String estacion;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "vehiculo_id")
-    private Vehiculo vehiculo;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ruta_id")
-    private Ruta ruta;
+    @OneToMany(mappedBy = "parada", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private List<RutaParada> rutaParadas;
 }

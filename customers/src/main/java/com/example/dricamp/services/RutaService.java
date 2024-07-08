@@ -19,8 +19,8 @@ public class RutaService {
         return rutaRepository.findAll();
     }
 
-    public Optional<Ruta> getRutaById(Long id) {
-        return rutaRepository.findById(id);
+    public Ruta getRutaById(Long id) {
+        return rutaRepository.findById(id).orElse(null);
     }
 
     public Ruta saveRuta(Ruta ruta) {

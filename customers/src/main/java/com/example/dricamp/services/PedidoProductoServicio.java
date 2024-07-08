@@ -1,6 +1,8 @@
 package com.example.dricamp.services;
 
 import com.example.dricamp.Repositories.PedidoProductoRepositorio;
+import com.example.dricamp.Repositories.PedidoRepositorio;
+import com.example.dricamp.models.Pedido;
 import com.example.dricamp.models.PedidoProducto;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,8 @@ import java.util.List;
 public class PedidoProductoServicio implements IPedidoProductoServicio{
     @Autowired
     private PedidoProductoRepositorio pedidoProductoRepositorio;
+    @Autowired
+    private PedidoServicio pedidoServicio;
 
     @Override
     public List<PedidoProducto> findAll() {

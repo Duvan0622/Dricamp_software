@@ -1,5 +1,6 @@
 package com.example.dricamp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -33,14 +34,28 @@ public class Pedido {
 
     @ManyToOne
     @JoinColumn(name = "idTransportista", nullable = true)
-    private Usuario transportista;
+    private Transportista transportista;
 
     @Column(nullable = false)
     private LocalDate fechaPedido;
 
     private Double valorTotal;
 
-    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<PedidoProducto> pedidoProducto;
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private List<PedidoProducto> productos;
+
+    @PrePersist
+    @PreUpdate
+    private void calcularValorTotal() {
+        if (productos != null && !productos.isEmpty()) {
+            this.valorTotal = productos.stream()
+                    .mapToDouble(PedidoProducto::getValorTotal)
+                    .sum();
+        } else {
+            this.valorTotal = 2.0;
+        }
+    }
 }
+
 

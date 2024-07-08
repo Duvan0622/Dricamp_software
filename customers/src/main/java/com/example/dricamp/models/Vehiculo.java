@@ -1,13 +1,13 @@
 package com.example.dricamp.models;
 
 import java.util.List;
+import java.util.Set;
 
 import jakarta.persistence.*;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
-
 
 
 @Data
@@ -21,10 +21,6 @@ public class Vehiculo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idVehiculo;
 
-    @NotNull
-    @Size(max = 100)
-    private String nombreConductor;
-    
     @NotNull
     @Size(max = 10)
     private String placa;
@@ -44,10 +40,6 @@ public class Vehiculo {
     @Size(max = 50)
     private String marca;
 
-   @OneToMany(mappedBy = "vehiculo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Parada> paradas;
-
     @OneToMany(mappedBy = "vehiculo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Ruta> rutas;
-
+    private Set<Transportista> transportistas;
 }
